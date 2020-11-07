@@ -1,0 +1,20 @@
+projection;
+
+define behavior for ZC_RAP_Travel_3LT alias Travel
+use etag //Etag Handing
+{
+  use create;
+  use update;
+  use delete;
+
+  use association _Booking { create; }
+}
+
+define behavior for ZC_RAP_Booking_3LT alias Booking
+use etag //Etag Handling
+{
+  use update;
+  use delete;
+
+  use association _Travel;
+}

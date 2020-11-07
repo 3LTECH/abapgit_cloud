@@ -1,0 +1,66 @@
+managed; // implementation in class zbp_i_rap_travel_3lt unique;
+
+define behavior for ZI_RAP_Travel_3LT alias Travel//alias <alias_name>
+persistent table zrap_atrav_3lt
+lock master
+//authorization master ( instance )
+etag master LocalLastChangedAt // Optimistic locking
+{
+  create;
+  update;
+  delete;
+  association _Booking { create; }
+
+  field ( numbering : managed, readonly ) TravelUuid; //UUID-based scenario (numering managed and read only)
+
+  mapping for zrap_atrav_3lt //Field mapping between CDS view and underlying database table
+  {
+    TravelUuid = travel_uuid;
+    TravelId = travel_id;
+    AgencyId = agency_id;
+    CustomerId = customer_id;
+    BeginDate = begin_date;
+    EndDate = end_date;
+    BookingFee = booking_fee;
+    TotalPrice = total_price;
+    CurrencyCode = currency_code;
+    Description = description;
+    TravelStatus = overall_status;
+    CreatedBy = created_by;
+    CreatedAt = created_at;
+    LastChangedBy = last_changed_by;
+    LastChangedAt = last_changed_at;
+    LocalLastChangedAt = local_last_changed_at;
+  }
+}
+
+define behavior for ZI_RAP_Booking_3LT alias Booking //alias <alias_name>
+persistent table zrap_abook_3lt
+lock dependent by _Travel
+//authorization dependent by <association>
+etag master LocalLastChangedAt // Optimistic locking
+{
+  update;
+  delete;
+  association _Travel;
+
+  field ( numbering : managed, readonly ) BookingUid;
+  field ( readonly ) TravelUuid;
+
+  mapping for zrap_abook_3lt //Field mapping between CDS view and underlying database table
+  {
+    BookingUid          = booking_uid;
+    TravelUuid          = travel_uuid;
+    BookingId           = booking_id;
+    CustomerId          = customer_id;
+    CarrierId           = carrier_id;
+    ConnectionId        = connection_id;
+    FlightDate          = flight_date;
+    FlightPrice         = flight_price;
+    CurrencyCode        = currency_code;
+    CreatedBy           = created_by;
+    LastChangedBy       = last_changed_by;
+    LocalLastChangedAt  = local_last_changed_at;
+  }
+
+}
