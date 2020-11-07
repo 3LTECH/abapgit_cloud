@@ -1,0 +1,59 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: { typeName: 'Booking',
+                typeNamePlural: 'Bookings',
+                title: { type: #STANDARD, label: 'Travel', value: 'BookingId' } } }
+
+
+annotate view ZC_RAP_Booking_3LT with
+{
+  @UI.facet: [{ id: 'Booking',
+                purpose: #STANDARD,
+                type: #IDENTIFICATION_REFERENCE,
+                label: 'Booking',
+                position: 10 } ]
+
+  @UI: { identification: [{ position: 10, label: 'Booking UUID' }] }
+  BookingUid;
+
+  @UI.hidden: true
+  TravelUuid;
+
+  @UI: { lineItem:          [{ position: 20 }], //Layout Information of each element as column
+         identification:    [{ position: 20 }] } //Enable an element for selection in the filter bar
+  BookingId;
+
+  @UI: { lineItem:          [{ position: 30 }], //Layout Information of each element as column
+         identification:    [{ position: 30 }] } //Enable an element for selection in the filter bar
+  BookingDate;
+
+  @UI: { lineItem:          [{ position: 40 }], //Layout Information of each element as column
+         identification:    [{ position: 40 }] } //Enable an element for selection in the filter bar
+  CustomerId;
+
+  @UI: { lineItem:          [{ position: 50 }], //Layout Information of each element as column
+         identification:    [{ position: 50 }] } //Enable an element for selection in the filter bar
+  CarrierId;
+
+  @UI: { lineItem:          [{ position: 60 }], //Layout Information of each element as column
+         identification:    [{ position: 60 }] } //Enable an element for selection in the filter bar
+  ConnectionId;
+
+  @UI: { lineItem:          [{ position: 70 }], //Layout Information of each element as column
+         identification:    [{ position: 70 }] } //Enable an element for selection in the filter bar
+  FlightDate;
+
+  @UI: { lineItem:          [{ position: 80 }], //Layout Information of each element as column
+         identification:    [{ position: 80 }] } //Enable an element for selection in the filter bar
+  FlightPrice;
+
+  @UI.hidden: true
+  CreatedBy;
+
+  @UI.hidden: true
+  LastChangedBy;
+
+  @UI.hidden: true
+  LocalLastChangedAt;
+
+}

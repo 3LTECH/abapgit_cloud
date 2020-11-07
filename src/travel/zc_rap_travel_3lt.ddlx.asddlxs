@@ -1,0 +1,79 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: { typeName: 'Travel',
+                typeNamePlural: 'Travels',
+                title: { type: #STANDARD, label: 'Travel', value: 'TravelId' } },
+  presentationVariant: [{sortOrder: [{ by: 'TravelId', direction: #DESC }] }] }
+
+annotate view ZC_RAP_Travel_3LT with
+{
+  @UI.facet: [{ id: 'Travel',
+                purpose: #STANDARD,
+                type: #IDENTIFICATION_REFERENCE,
+                label: 'Travel',
+                position: 10 },
+              { id: 'Booking',
+                purpose: #STANDARD,
+                type: #LINEITEM_REFERENCE,
+                label: 'Booking',
+                position: 20,
+                targetElement: '_Booking'} ]
+
+  @UI: { identification: [{ position: 1, label: 'Travel UUID' }] }
+  TravelUuid;
+
+  @UI: { lineItem:          [{ position: 10 }], //Layout Information of each element as column
+         identification:    [{ position: 10 }], //Layout Information of each element shown in the identification section of the object page
+         selectionField:    [{ position: 10 }] } //Enable an element for selection in the filter bar
+  TravelId;
+
+  @UI: { lineItem:          [{ position: 20 }], //Layout Information of each element as column
+       identification:      [{ position: 20 }], //Layout Information of each element shown in the identification section of the object page
+       selectionField:      [{ position: 20 }] } //Enable an element for selection in the filter bar
+  AgencyId;
+
+  @UI: { lineItem:          [{ position: 30 }], //Layout Information of each element as column
+       identification:      [{ position: 30 }], //Layout Information of each element shown in the identification section of the object page
+       selectionField:      [{ position: 30 }] } //Enable an element for selection in the filter bar
+  CustomerId;
+
+  @UI: { lineItem:          [{ position: 40 }], //Layout Information of each element as column
+         identification:    [{ position: 40 }] } //Enable an element for selection in the filter bar
+  BeginDate;
+
+  @UI: { lineItem:          [{ position: 50 }], //Layout Information of each element as column
+         identification:    [{ position: 50 }] } //Enable an element for selection in the filter bar
+  EndDate;
+
+  @UI: { lineItem:          [{ position: 60 }], //Layout Information of each element as column
+         identification:    [{ position: 60 }] } //Enable an element for selection in the filter bar
+  BookingFee;
+
+  @UI: { lineItem:          [{ position: 70 }], //Layout Information of each element as column
+         identification:    [{ position: 70 }] } //Enable an element for selection in the filter bar
+  TotalPrice;
+
+  @UI: { lineItem:          [{ position: 80 }], //Layout Information of each element as column
+         identification:    [{ position: 80 }] } //Enable an element for selection in the filter bar
+  Description;
+
+  @UI: { lineItem:          [{ position: 90 }], //Layout Information of each element as column
+         identification:    [{ position: 90 }] } //Enable an element for selection in the filter bar
+  TravelStatus;
+  
+  @UI.hidden: true
+  CreatedBy;
+  
+  @UI.hidden: true
+  CreatedAt;
+  
+  @UI.hidden: true
+  LastChangedBy;
+  
+  @UI.hidden: true
+  LastChangedAt;
+  
+  @UI.hidden: true
+  LocalLastChangedAt;
+
+}
