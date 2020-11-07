@@ -57,22 +57,28 @@ annotate view ZC_RAP_Travel_3LT with
          identification:    [{ position: 80 }] } //Enable an element for selection in the filter bar
   Description;
 
-  @UI: { lineItem:          [{ position: 90 }], //Layout Information of each element as column
-         identification:    [{ position: 90 }] } //Enable an element for selection in the filter bar
+  @UI: { lineItem:          [{ position: 90 },
+                             {  type: #FOR_ACTION, dataAction: 'acceptTravel', label: 'Accept Travel' },
+                             {  type: #FOR_ACTION, dataAction: 'rejectTravel', label: 'Reject Travel' }
+                             ], //Layout Information of each element as column
+         identification:    [{ position: 90 },
+                             {  type: #FOR_ACTION, dataAction: 'acceptTravel', label: 'Accept Travel' },
+                             {  type: #FOR_ACTION, dataAction: 'rejectTravel', label: 'Reject Travel' }
+                             ] } //Enable an element for selection in the filter bar
   TravelStatus;
-  
+
   @UI.hidden: true
   CreatedBy;
-  
+
   @UI.hidden: true
   CreatedAt;
-  
+
   @UI.hidden: true
   LastChangedBy;
-  
+
   @UI.hidden: true
   LastChangedAt;
-  
+
   @UI.hidden: true
   LocalLastChangedAt;
 
